@@ -1,6 +1,6 @@
 #include <iostream>
 #include "postavke.h"
-#include "generatorVjerojatnosti.h"
+#include "generatorSlucajnihDogadjaja.h"
 #include <string.h>
 
 
@@ -8,10 +8,10 @@ using namespace std;
 
 int main(){
 	Postavke postavke("izvoriste.ini");
-	GeneratorVjerojatnosti generator;
+	GeneratorSlucajnihDogadjaja generator;
 	int suma=0;
 	for (int i=0; i<10000; i++){
-		if(generator.generirajVjerojatnost(0.4)) suma++;
+		if(generator.generirajDogadjaj(0.4)) suma++;
 	}
 	cout<<suma<<endl;
 	return 0;
