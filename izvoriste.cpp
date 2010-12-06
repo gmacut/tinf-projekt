@@ -1,7 +1,7 @@
 #include <iostream>
-#include "postavke.h"
-#include "generatorSlucajnihDogadjaja.h"
-#include <string.h>
+#include "postavke.hpp"
+#include "generatorSlucajnihDogadjaja.hpp"
+#include <string>
 
 
 using namespace std;
