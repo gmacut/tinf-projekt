@@ -1,6 +1,12 @@
 LINKERFLAGS = -Xlinker --enable-auto-import
 
-all: izvoriste
+all: izvoriste koder
+	
+koder: src/koder.cpp koder.conf
+	g++ -o output/koder.exe $(LINKERFLAGS) src/koder.cpp
+
+koder.conf:
+	@cp src/koder.ini output/koder.ini
 	
 izvoriste: src/izvoriste.cpp izvoriste.conf setup
 	g++ -o output/izvoriste.exe $(LINKERFLAGS) src/izvoriste.cpp

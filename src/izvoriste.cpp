@@ -4,6 +4,7 @@
 #include "generatorSlucajnihDogadjaja.hpp"
 #include <string>
 #include <cstdlib>
+#include <cmath>
 
 
 using namespace std;
@@ -49,5 +50,15 @@ int main(){
 	for (map<char, int>::iterator it = pojavljivanjeZnakova.begin(); it!=pojavljivanjeZnakova.end(); ++it){
 		cout << it->first << ": " << it->second << " puta" << endl;
 	}
+	
+	double entropija=0;
+	for (vector< pair<char,double> >::iterator it = znakovi.begin(); it!=znakovi.end(); ++it){
+		entropija += it->second * log(it->second)/log(2);
+	}
+	
+	entropija *= -1;
+	
+	cout<<endl<<"Entropija izvora iznosi: "<<entropija<<endl;
+	
 	return 0;
 }
