@@ -2,11 +2,11 @@ LINKERFLAGS = -Xlinker --enable-auto-import
 
 all: izvoriste
 	
-izvoriste: izvoriste.cpp izvoriste.conf setup
-	g++ -o output/izvoriste.exe $(LINKERFLAGS) izvoriste.cpp
+izvoriste: src/izvoriste.cpp izvoriste.conf setup
+	g++ -o output/izvoriste.exe $(LINKERFLAGS) src/izvoriste.cpp
 	
-izvoriste.conf: izvoriste.ini
-	@cp izvoriste.ini output/izvoriste.ini
+izvoriste.conf: src/izvoriste.ini
+	@cp src/izvoriste.ini output/izvoriste.ini
 
 setup:
 	@-test -d output || mkdir output
