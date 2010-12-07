@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
 /**
  * @brief klasa pomoću koje možemo generirati slučajne događaje
@@ -26,5 +27,23 @@ class GeneratorSlucajnihDogadjaja{
 		 */
 		int generirajDogadjaj(double vjerojatnost){
 			return rand() < vjerojatnost*RAND_MAX;
+		}
+		
+		/**
+		 * @brief metoda koja bira znak iz vektora znakova ovisno o njihovim
+		 * vjerojatnostima pojavljivanja
+		 * 
+		 * @param znakovi vektor parova znakova i njihovih vjerojatnosti
+		 * @return nasumičan znak iz liste znakova
+		 */
+		char odaberiZnak(std::vector< std::pair<char,double> > znakovi){
+			double vjerojatnostDosad = 0;
+			int nasumicnaVrijednost = rand();
+			for (std::vector< std::pair<char,double> >::iterator it=znakovi.begin(); it != znakovi.end(); ++it){
+				vjerojatnostDosad += it->second;
+				if (nasumicnaVrijednost < vjerojatnostDosad * RAND_MAX)
+					return it->first;
+			}
+			return znakovi[znakovi.size()-1].first;
 		}
 };
