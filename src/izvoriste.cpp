@@ -19,25 +19,17 @@ int main(){
 	if (!postavke.ucitane())
 		pogreska("Postavke nisu uspjesno ucitane, nije moguce otvoriti datoteku izvoriste.ini ili je ona neispravna");
 	
-	GeneratorSlucajnihDogadjaja generator;
 	vector< pair<char,double> > znakovi;
-	map<char, int> pojavljivanjeZnakova;
+	postavke.dohvatiZnakove(znakovi);
 	
-	for (map<string,string>::iterator it = postavke.begin(); it!=postavke.end(); ++it){
-		if (it->first.find("znak-")!=string::npos)
-			znakovi.push_back(
-				pair<char,double>(
-					it->first[5],
-					atof(it->second.c_str())
-				)
-			);
-	}
 	ofstream izlaz;
 	izlaz.open(postavke["izlaz"].c_str(), ios::out);
 	
 	if (!izlaz.is_open())
 		pogreska("Datoteka " + postavke["izlaz"] + " nije pronadena");
 
+	GeneratorSlucajnihDogadjaja generator;
+	map<char, int> pojavljivanjeZnakova;
 	char c;
 	for (int i=0; i<10000; i++){
 		c = generator.odaberiZnak(znakovi);
@@ -58,7 +50,7 @@ int main(){
 	
 	entropija *= -1;
 	
-	cout<<endl<<"Entropija izvora iznosi: "<<entropija<<endl;
+	cout << endl << "Entropija izvora iznosi: " << entropija << endl;
 	
 	return 0;
 }

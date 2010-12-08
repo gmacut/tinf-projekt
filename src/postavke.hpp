@@ -2,6 +2,8 @@
 #include <map>
 #include <string>
 #include <fstream>
+#include <cstdlib>
+#include <vector>
 
 /**
  * @brief Klasa koja učitava postavke iz ini datoteke
@@ -74,4 +76,21 @@ class Postavke{
 		int ucitane(){
 			return _ucitane;
 		}
+		
+		/**
+		 * @brief dohvaća znakove i njihove vjerojatnosti
+		 *
+		 * @param znakovi vektor parova znakova i njihovih vjerojatnosti
+		 */
+		void dohvatiZnakove(std::vector< std::pair<char,double> >& znakovi){
+			for (std::map<std::string,std::string>::iterator it = _postavke.begin(); it!=_postavke.end(); ++it){
+			if (it->first.find("znak-")!=std::string::npos)
+				znakovi.push_back(
+					std::pair<char,double>(
+						it->first[5],
+						atof(it->second.c_str())
+					)
+				);	
+		}
+	}
 };
