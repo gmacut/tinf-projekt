@@ -1,7 +1,9 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 
 #include "postavke.hpp"
+#include "generatorSlucajnihDogadjaja.hpp"
 
 using namespace std;
 
@@ -26,11 +28,19 @@ int main(){
 		pogreska("Nije moguce otvoriti izlaznu datoteku");
 		
 	char c;
+	GeneratorSlucajnihDogadjaja generator;
+	double vjerojatnost=atof(postavke["vjerojatnostPogreske"].c_str());
 	while(1){
 		ulaz >> c;
 		if (ulaz.eof())
 			break;
-		izlaz << //tu dodati generator vjerojatnosti i toggle 0/1 + dodati u makefile
+		if (generator.generirajDogadjaj(vjerojatnost)){
+			if (c=='0')
+				c='1';
+			else 
+				c='0';
+		}
+		izlaz << c;
 	}
 	ulaz.close();
 	izlaz.close();

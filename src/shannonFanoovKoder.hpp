@@ -16,7 +16,7 @@ class ShannonFanoovKoder{
 	private:
 		map<char,string> _tablicaKoda;
 		
-		bool usporedivanjeZnakova(const pair<char,double>& prvi, const pair<char,double>& drugi){
+		static bool usporedivanjeZnakova(const pair<char,double>& prvi, const pair<char,double>& drugi){
 			return prvi.second > drugi.second;
 		}
 		
@@ -56,7 +56,7 @@ class ShannonFanoovKoder{
 		 * @param znakovi referenca na vektor parova znakova i pridruženih vjerojatnosti
 		 */
 		ShannonFanoovKoder(vector< pair<char,double> >& znakovi){
-			sort(znakovi.begin(),znakovi.end(),usporedivanjeZnakova);
+			sort(znakovi.begin(),znakovi.end(),ShannonFanoovKoder::usporedivanjeZnakova);
 			dodijeliKod(znakovi, 0, znakovi.size()-1, 1);
 		}
 		
