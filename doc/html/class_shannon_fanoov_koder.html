@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Tinf - projekt - tim MK12: Opis  klase ShannonFanoovKoder</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Generirao Doxygen 1.7.2 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Glavna&#160;stranica</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Klase</span></a></li>
+      <li><a href="files.html"><span>Datoteke</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Sve&#160;klase</span></a></li>
+      <li><a href="classes.html"><span>Skupno&#160;kazalo&#160;</span></a></li>
+      <li><a href="functions.html"><span>Svi&#160;članovi&#160;klasa</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public članovi</a>  </div>
+  <div class="headertitle">
+<h1>Opis klase ShannonFanoovKoder</h1>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="ShannonFanoovKoder" -->
+<p>koder/dekoder Shannon-Fanoovim kodom  
+<a href="#_details">Opširnije...</a></p>
+
+<p><code>#include &lt;<a class="el" href="shannon_fanoov_koder_8hpp_source.html">shannonFanoovKoder.hpp</a>&gt;</code></p>
+
+<p><a href="class_shannon_fanoov_koder-members.html">Popis svih članova.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Public članovi</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shannon_fanoov_koder.html#ae935941c793d51114c4294aa01404574">ShannonFanoovKoder</a> (vector&lt; pair&lt; char, double &gt; &gt; &amp;znakovi)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">konstruktor koji prima referencu na vektor parova znakova i njihovih vjerojatnosti koje određuju oblik koda  <a href="#ae935941c793d51114c4294aa01404574"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shannon_fanoov_koder.html#af34e522c2e10f838184bd602bae2fcdf">kodiraj</a> (char c)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">za zadani znak dohvaća kodnu riječ tog znaka  <a href="#af34e522c2e10f838184bd602bae2fcdf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shannon_fanoov_koder.html#a3b693aec181b17bdfca15bd79adc4d4b">operator[]</a> (char c)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">preopterećen operator [] kako bi se omogućilo lakše kodiranje.  <a href="#a3b693aec181b17bdfca15bd79adc4d4b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shannon_fanoov_koder.html#abeaa2126187e6f22dfc5ae433bcb846e">dekodiraj</a> (string kod)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">za zadani kod vraća pripadajući znak  <a href="#abeaa2126187e6f22dfc5ae433bcb846e"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Detaljno objašnjenje</h2>
+<p>koder/dekoder Shannon-Fanoovim kodom </p>
+<p>Na osnovu konstruktoru predanih parova znakova i njima pridruženih vjerojatnosti stvara se tablica kodnih riječi. Nakon toga se za svaki znak može dohvatiti njegova kodna riječ i obratno. </p>
+<hr/><h2>Dokumentacija konstruktora i destruktora </h2>
+<a class="anchor" id="ae935941c793d51114c4294aa01404574"></a><!-- doxytag: member="ShannonFanoovKoder::ShannonFanoovKoder" ref="ae935941c793d51114c4294aa01404574" args="(vector&lt; pair&lt; char, double &gt; &gt; &amp;znakovi)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ShannonFanoovKoder::ShannonFanoovKoder </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; pair&lt; char, double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"> <em>znakovi</em>&#160;)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>konstruktor koji prima referencu na vektor parova znakova i njihovih vjerojatnosti koje određuju oblik koda </p>
+<dl><dt><b>Parametri:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">znakovi</td><td>referenca na vektor parova znakova i pridruženih vjerojatnosti </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><pre class="fragment">                                                                        {
+                        sort(znakovi.begin(),znakovi.end(),ShannonFanoovKoder::usporedivanjeZnakova);
+                        dodijeliKod(znakovi, 0, znakovi.size()-1, 1);
+                }
+</pre></div>
+</div>
+</div>
+<hr/><h2>Dokumentacija funkcija</h2>
+<a class="anchor" id="abeaa2126187e6f22dfc5ae433bcb846e"></a><!-- doxytag: member="ShannonFanoovKoder::dekodiraj" ref="abeaa2126187e6f22dfc5ae433bcb846e" args="(string kod)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ShannonFanoovKoder::dekodiraj </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"> <em>kod</em>&#160;)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>za zadani kod vraća pripadajući znak </p>
+<dl><dt><b>Parametri:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kod</td><td>kod znaka koji se traži </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Povratne vrijednosti:</b></dt><dd>znak ako je predana kodna riječ u kodu, inače 0 </dd></dl>
+<div class="fragment"><pre class="fragment">                                          {
+                        <span class="keywordflow">for</span> (map&lt;char,string&gt;::iterator it = _tablicaKoda.begin(); it!=_tablicaKoda.end(); ++it){
+                                <span class="keywordflow">if</span> (kod==it-&gt;second)
+                                        <span class="keywordflow">return</span> it-&gt;first;
+                        }
+                        <span class="keywordflow">return</span> 0;
+                }
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="af34e522c2e10f838184bd602bae2fcdf"></a><!-- doxytag: member="ShannonFanoovKoder::kodiraj" ref="af34e522c2e10f838184bd602bae2fcdf" args="(char c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string ShannonFanoovKoder::kodiraj </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"> <em>c</em>&#160;)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>za zadani znak dohvaća kodnu riječ tog znaka </p>
+<dl><dt><b>Parametri:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>znak koji se kodira </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Povratne vrijednosti:</b></dt><dd>kodna riječ znaka </dd></dl>
+<div class="fragment"><pre class="fragment">                                      {
+                        <span class="keywordflow">return</span> _tablicaKoda[c];
+                }
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a3b693aec181b17bdfca15bd79adc4d4b"></a><!-- doxytag: member="ShannonFanoovKoder::operator[]" ref="a3b693aec181b17bdfca15bd79adc4d4b" args="(char c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string ShannonFanoovKoder::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"> <em>c</em>&#160;)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>preopterećen operator [] kako bi se omogućilo lakše kodiranje. </p>
+<p>Interno se preusmjerava na funkciju <a class="el" href="class_shannon_fanoov_koder.html#af34e522c2e10f838184bd602bae2fcdf" title="za zadani znak dohvaća kodnu riječ tog znaka">ShannonFanoovKoder::kodiraj(char)</a> </p>
+<dl><dt><b>Parametri:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>znak koji se kodira </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Povratne vrijednosti:</b></dt><dd>kodna riječ znaka </dd></dl>
+<div class="fragment"><pre class="fragment">                                         {
+                        <span class="keywordflow">return</span> <a class="code" href="class_shannon_fanoov_koder.html#af34e522c2e10f838184bd602bae2fcdf" title="za zadani znak dohvaća kodnu riječ tog znaka">kodiraj</a>(c);
+                }
+</pre></div>
+</div>
+</div>
+<hr/>Dokumentacija klase je napravljena iz datoteka: <ul>
+<li>src/<a class="el" href="shannon_fanoov_koder_8hpp_source.html">shannonFanoovKoder.hpp</a></li>
+</ul>
+</div>
+<hr class="footer"/><address class="footer"><small>Napravljeno Čet Pro 9 2010 00:58:10 projekt: Tinf - projekt - tim MK12 generator: &#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
+</body>
+</html>
