@@ -44,13 +44,16 @@ int main(){
 		
 	char c;
 	string kod="";
-	while(ulaz){
-		do {
-			ulaz.get(c);
-			kod += c;
-			c = koder.dekodiraj(kod);
-		} while (!c && !ulaz.eof());
-		kod = "";
+	
+	while(true){
+		ulaz.get(c);
+		if (!ulaz.good())
+			break;
+		kod+=c;
+		c=koder.dekodiraj(kod);
+		if (c==0)
+			continue;
+		kod="";
 		izlaz.put(c);
 	}
 	

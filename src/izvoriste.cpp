@@ -31,7 +31,8 @@ int main(){
 	GeneratorSlucajnihDogadjaja generator;
 	map<char, int> pojavljivanjeZnakova;
 	char c;
-	for (int i=0; i<10000; i++){
+	int brojPonavljanja = atoi(postavke["brojGeneriranihZnakova"].c_str());
+	for (int i=0; i<brojPonavljanja; i++){
 		c = generator.odaberiZnak(znakovi);
 		izlaz << c;
 		pojavljivanjeZnakova[c]++;

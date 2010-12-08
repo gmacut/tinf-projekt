@@ -44,8 +44,10 @@ int main(){
 		pogreska("Nije moguce otvoriti izlaznu datoteku");
 		
 	char c;
-	while(ulaz){
+	while(1){
 		ulaz >> c;
+		if (ulaz.eof())
+			break;
 		izlaz << koder[c];
 	}
 	ulaz.close();
