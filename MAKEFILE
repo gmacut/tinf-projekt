@@ -1,12 +1,18 @@
 LINKERFLAGS = -Xlinker --enable-auto-import
 
-all: izvoriste koder
+all: izvoriste koderInformacije dekoderInformacije
 	
-koder: src/koder.cpp koder.conf
-	g++ -o output/koder.exe $(LINKERFLAGS) src/koder.cpp
+dekoderInformacije: src/dekoderInformacije.cpp dekoderInformacije.conf
+	g++ -o output/dekoderInformacije $(LINKERFLAGS) src/dekoderInformacije.cpp
+	
+dekoderInformacije.conf:
+	@cp src/dekoderInformacije.ini output/dekoderInformacije.ini
+	
+koderInformacije: src/koderInformacije.cpp koderInformacije.conf
+	g++ -o output/koderInformacije.exe $(LINKERFLAGS) src/koderInformacije.cpp
 
-koder.conf:
-	@cp src/koder.ini output/koder.ini
+koderInformacije.conf:
+	@cp src/koderInformacije.ini output/koderInformacije.ini
 	
 izvoriste: src/izvoriste.cpp izvoriste.conf setup
 	g++ -o output/izvoriste.exe $(LINKERFLAGS) src/izvoriste.cpp

@@ -16,22 +16,21 @@ void pogreska(string str){
 }
 
 int main(){
-	Postavke postavke("koder.ini");
+	Postavke postavke("dekoderInformacije.ini");
 	if (!postavke.ucitane())
-		pogreska("Postavke nisu uspjesno ucitane, nije moguce otvoriti datoteku koder.ini ili je ona neispravna");
+		pogreska("Postavke nisu uspjesno ucitane, nije moguce otvoriti datoteku dekoderInformacije.ini ili je ona neispravna");
 	
 	vector< pair<char,double> > znakovi;
 	postavke.dohvatiZnakove(znakovi);
 	
 	ShannonFanoovKoder koder(znakovi);
 	
-	cout << "Konstruiran je Shannon-Fanoov koder:" << endl;
+	cout << "Konstruiran je Shannon-Fanoov koder koji se koristi za dekodiranje:" << endl;
 	double duljina = 0;
 	for (int i=0; i<znakovi.size(); i++){
 		cout << "Znak " << znakovi[i].first << "(p=" << znakovi[i].second << "): " << koder[znakovi[i].first] << endl;
 		duljina += znakovi[i].second * koder[znakovi[i].first].size();
 	}
-	cout << "Prosjecna duljina kodne rijeci iznosi " << duljina << " bit/simbol" << endl;
 	
 	ifstream ulaz;
 	ulaz.open(postavke["ulaz"].c_str());
@@ -44,10 +43,18 @@ int main(){
 		pogreska("Nije moguce otvoriti izlaznu datoteku");
 		
 	char c;
+	string kod="";
 	while(ulaz){
-		ulaz >> c;
-		izlaz << koder[c];
+		do {
+			ulaz.get(c);
+			kod += c;
+			c = koder.dekodiraj(kod);
+		} while (!c && !ulaz.eof());
+		kod = "";
+		izlaz.put(c);
 	}
 	
+	ulaz.close();
+	izlaz.close();
 	return 0;
 }

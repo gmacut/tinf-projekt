@@ -48,6 +48,7 @@ int main(){
 		ulaz >> c;
 		izlaz << koder[c];
 	}
-	
+	ulaz.close();
+	izlaz.close();
 	return 0;
 }

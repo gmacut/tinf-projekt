@@ -33,14 +33,20 @@ class ShannonFanoovKoder{
 		}
 		
 	public:
-		ShannonFanoovKoder(vector< pair<char,double> > znakovi){
+		ShannonFanoovKoder(vector< pair<char,double> >& znakovi){
 			sort(znakovi.begin(),znakovi.end(),usporedivanjeZnakova);
-			for (int i=0;i<znakovi.size(); i++)
-				cout << znakovi[i].first << znakovi[i].second << endl;
-			
 			dodijeliKod(znakovi, 0, znakovi.size()-1, 1);
 		}
+		
 		string operator[](char c){
 			return _tablicaKoda[c];
+		}
+		
+		char dekodiraj(string kod){
+			for (map<char,string>::iterator it = _tablicaKoda.begin(); it!=_tablicaKoda.end(); ++it){
+				if (kod==it->second)
+					return it->first;
+			}
+			return 0;
 		}
 };
