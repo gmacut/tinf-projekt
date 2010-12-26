@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "postavke.hpp"
+#include <map>
 #include "generatorSlucajnihDogadjaja.hpp"
 #include <string>
 #include <cstdlib>
@@ -19,13 +19,9 @@ int main(int argc, char* argv[]){
 	double znak_a=0.2;
 	double znak_b=0.2;
 	double znak_c=0.6;
-	/*
-	Postavke postavke("izvoriste.ini");
-	if (!postavke.ucitane())
-		pogreska("Postavke nisu uspjesno ucitane, nije moguce otvoriti datoteku izvoriste.ini ili je ona neispravna");
-	*/
+	
 	vector< pair<char,double> > znakovi;
-	//postavke.dohvatiZnakove(znakovi);
+	
 	znakovi.push_back(pair<char,double>('a', znak_a));
 	znakovi.push_back(pair<char,double>('b', znak_b));
 	znakovi.push_back(pair<char,double>('c', znak_c));
