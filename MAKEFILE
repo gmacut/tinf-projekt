@@ -1,33 +1,18 @@
 LINKERFLAGS = -Xlinker --enable-auto-import
 
-all: izvoriste koderInformacije kanal dekoderInformacije odrediste
+all: izvoriste koderInformacije kanal dekoderInformacije
 	
-odrediste: src/odrediste.cpp
-	g++ -o output/odrediste $(LINKERFLAGS) src/odrediste.cpp
+dekoderInformacije: src/dekoderInformacije.cpp
+	g++ -o output/ent_dekod $(LINKERFLAGS) src/dekoderInformacije.cpp
 	
-dekoderInformacije: src/dekoderInformacije.cpp dekoderInformacije.conf
-	g++ -o output/dekoderInformacije $(LINKERFLAGS) src/dekoderInformacije.cpp
-	
-dekoderInformacije.conf:
-	@cp src/dekoderInformacije.ini output/dekoderInformacije.ini
-	
-kanal: src/kanal.cpp kanal.conf
+kanal: src/kanal.cpp
 	g++ -o output/kanal $(LINKERFLAGS) src/kanal.cpp
 	
-kanal.conf:
-	@cp src/kanal.ini output/kanal.ini
-	
-koderInformacije: src/koderInformacije.cpp koderInformacije.conf
-	g++ -o output/koderInformacije $(LINKERFLAGS) src/koderInformacije.cpp
+koderInformacije: src/koderInformacije.cpp
+	g++ -o output/ent_kod $(LINKERFLAGS) src/koderInformacije.cpp
 
-koderInformacije.conf:
-	@cp src/koderInformacije.ini output/koderInformacije.ini
-	
-izvoriste: src/izvoriste.cpp izvoriste.conf setup
-	g++ -o output/izvoriste $(LINKERFLAGS) src/izvoriste.cpp
-	
-izvoriste.conf: src/izvoriste.ini
-	@cp src/izvoriste.ini output/izvoriste.ini
+izvoriste: src/izvoriste.cpp setup
+	g++ -o output/izvor $(LINKERFLAGS) src/izvoriste.cpp
 
 setup:
 	@-test -d output || mkdir output
