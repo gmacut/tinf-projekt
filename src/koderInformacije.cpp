@@ -4,8 +4,9 @@
 #include <map>
 #include <cstdlib>
 #include <fstream>
-
-#include "postavke.hpp"
+#include <map>
+#include <vector>
+#include <iostream>
 #include "shannonFanoovKoder.hpp"
 
 using namespace std;
@@ -15,13 +16,15 @@ void pogreska(string str){
 	exit(-1);
 }
 
-int main(){
-	Postavke postavke("koderInformacije.ini");
-	if (!postavke.ucitane())
-		pogreska("Postavke nisu uspjesno ucitane, nije moguce otvoriti datoteku koderInformacije.ini ili je ona neispravna");
+int main(int argc, char* argv[]){
+	double znak_a=0.2;
+	double znak_b=0.2;
+	double znak_c=0.6;
 	
 	vector< pair<char,double> > znakovi;
-	postavke.dohvatiZnakove(znakovi);
+	znakovi.push_back(pair<char, double>('a', znak_a));
+	znakovi.push_back(pair<char, double>('b', znak_b));
+	znakovi.push_back(pair<char, double>('c', znak_c));
 	
 	ShannonFanoovKoder koder(znakovi);
 	
@@ -34,12 +37,16 @@ int main(){
 	cout << "Prosjecna duljina kodne rijeci iznosi " << duljina << " bit/simbol" << endl;
 	
 	ifstream ulaz;
-	ulaz.open(postavke["ulaz"].c_str());
+	
+	if (argc < 3)
+		pogreska("Program je potrebno pozvati sa imenom ulazne i imenom izlazne datoteke\n");
+	
+	ulaz.open(argv[1]);
 	if (!ulaz.is_open())
 		pogreska("Nije moguce otvoriti ulaznu datoteku");
 	
 	ofstream izlaz;
-	izlaz.open(postavke["izlaz"].c_str());
+	izlaz.open(argv[2]);
 	if (!izlaz.is_open())
 		pogreska("Nije moguce otvoriti izlaznu datoteku");
 		
