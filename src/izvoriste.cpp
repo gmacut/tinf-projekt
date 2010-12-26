@@ -14,24 +14,34 @@ void pogreska(string str){
 	exit(-1);
 }
 
-int main(){
+int main(int argc, char* argv[]){
+	int brojGeneriranihZnakova=10000;
+	double znak_a=0.2;
+	double znak_b=0.2;
+	double znak_c=0.6;
+	/*
 	Postavke postavke("izvoriste.ini");
 	if (!postavke.ucitane())
 		pogreska("Postavke nisu uspjesno ucitane, nije moguce otvoriti datoteku izvoriste.ini ili je ona neispravna");
-	
+	*/
 	vector< pair<char,double> > znakovi;
-	postavke.dohvatiZnakove(znakovi);
+	//postavke.dohvatiZnakove(znakovi);
+	znakovi.push_back(pair<char,double>('a', znak_a));
+	znakovi.push_back(pair<char,double>('b', znak_b));
+	znakovi.push_back(pair<char,double>('c', znak_c));
 	
 	ofstream izlaz;
-	izlaz.open(postavke["izlaz"].c_str(), ios::out);
+	izlaz.open(argv[1], ios::out);
+	if (argc<2)
+		pogreska("Programu je kao argument potrebno predati ime izlazne datoteke");
 	
 	if (!izlaz.is_open())
-		pogreska("Datoteka " + postavke["izlaz"] + " nije pronadena");
+		pogreska("Izlaznu datoteku nije moguce stvoriti");
 
 	GeneratorSlucajnihDogadjaja generator;
 	map<char, int> pojavljivanjeZnakova;
 	char c;
-	int brojPonavljanja = atoi(postavke["brojGeneriranihZnakova"].c_str());
+	int brojPonavljanja = brojGeneriranihZnakova;
 	for (int i=0; i<brojPonavljanja; i++){
 		c = generator.odaberiZnak(znakovi);
 		izlaz << c;
