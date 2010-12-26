@@ -2,7 +2,6 @@
 #include <fstream>
 #include <cstdlib>
 
-#include "postavke.hpp"
 #include "generatorSlucajnihDogadjaja.hpp"
 
 using namespace std;
@@ -12,29 +11,35 @@ void pogreska(string str){
 	exit(-1);
 }
 
-int main(){
-	Postavke postavke("kanal.ini");
-	if (!postavke.ucitane())
-		pogreska("Postavke nisu uspjesno ucitane, nije moguce otvoriti datoteku kanal.ini ili je ona neispravna");
+int main(int argc, char* argv[]){
+	
+	if (argc < 4) 
+		pogreska("Program je potrebno pozvati sa 3 argumenta, imenom ulazne datoteke,\nimenom datoteke sa vektorom pogreske te imenom izlazne datoteke.\n");
 	
 	ifstream ulaz;
-	ulaz.open(postavke["ulaz"].c_str());
+	ulaz.open(argv[1]);
 	if (!ulaz.is_open())
 		pogreska("Nije moguce otvoriti ulaznu datoteku");
 	
+	ifstream vektorPogreske;
+	vektorPogreske.open(argv[2]);
+	
+	if(!vektorPogreske.is_open())
+		pogreska("Nije moguce otvoriti datoteku sa vektorom pogreske");
+	
 	ofstream izlaz;
-	izlaz.open(postavke["izlaz"].c_str());
+	izlaz.open(argv[3]);
 	if (!izlaz.is_open())
 		pogreska("Nije moguce otvoriti izlaznu datoteku");
 		
-	char c;
+	char c,e;
 	GeneratorSlucajnihDogadjaja generator;
-	double vjerojatnost=atof(postavke["vjerojatnostPogreske"].c_str());
 	while(1){
 		ulaz >> c;
-		if (ulaz.eof())
+		vektorPogreske >> e;
+		if (ulaz.eof() || vektorPogreske.eof())
 			break;
-		if (generator.generirajDogadjaj(vjerojatnost)){
+		if (e=='1'){
 			if (c=='0')
 				c='1';
 			else 
