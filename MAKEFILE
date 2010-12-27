@@ -1,6 +1,9 @@
 LINKERFLAGS = -Xlinker --enable-auto-import
 
-all: izvoriste koderInformacije kanal dekoderInformacije
+all: izvoriste koderInformacije kanal dekoderInformacije generatorVektoraPogreske
+
+generatorVektoraPogreske: src/generatorVektoraPogreske.cpp
+	g++ -o output/generatorVektoraPogreske $(LINKERFLAGS) src/generatorVektoraPogreske.cpp
 	
 dekoderInformacije: src/dekoderInformacije.cpp
 	g++ -o output/ent_dekod $(LINKERFLAGS) src/dekoderInformacije.cpp

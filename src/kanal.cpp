@@ -2,8 +2,6 @@
 #include <fstream>
 #include <cstdlib>
 
-#include "generatorSlucajnihDogadjaja.hpp"
-
 using namespace std;
 
 void pogreska(string str){
@@ -33,7 +31,7 @@ int main(int argc, char* argv[]){
 		pogreska("Nije moguce otvoriti izlaznu datoteku");
 		
 	char c,e;
-	GeneratorSlucajnihDogadjaja generator;
+	
 	while(1){
 		ulaz >> c;
 		vektorPogreske >> e;
